@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Meadows Agri Exports · Natural Soil Inputs from India</title>
+<meta name="description" content="Neem and botanical oil-cakes, cold-pressed oils, and organic soil inputs, sourced in India, graded honestly, and shipped worldwide. From Meadows Agri Exports.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   MEADOWS AGRI EXPORTS - v4 "The Narrative"
+   Chapters: 01 The Soil · 02 The Range · 03 The Standard · 04 The Voyage
+   green #1B5900 · cream #FFFFF6 · harvest gold accent
+   Fraunces (display) · Inter (body)
+   ============================================================ */
+:root{
+  --cream:#FFFFF6; --paper:#F6EFDD;
+  --green:#1B5900; --green-deep:#123D00;
+  --ink:#221E14; --ink-soft:#6A6250;
+  --gold:#A9761E; --gold-bright:#D8A94E;
+  --line:rgba(34,30,20,.16); --line-cream:rgba(255,255,246,.22);
+  --font-display:"Fraunces",Georgia,serif;
+  --font-body:"Inter",Helvetica,Arial,sans-serif;
+  --max:1240px; --pad:clamp(20px,5vw,64px);
+  --ease:cubic-bezier(.22,.61,.2,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);font-size:16.5px;line-height:1.75;color:var(--ink);background:var(--cream);-webkit-font-smoothing:antialiased}
+::selection{background:var(--green);color:var(--cream)}
+img,svg{display:block;max-width:100%}
+a{color:inherit;text-decoration:none} ul{list-style:none}
+button{font:inherit;background:none;border:none;cursor:pointer;color:inherit}
+.wrap{max-width:var(--max);margin:0 auto;padding-left:var(--pad);padding-right:var(--pad)}
+
+/* ---- type utilities ---- */
+.chapter{
+  display:flex;align-items:center;gap:16px;
+  font-size:11px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);
+}
+.chapter .n{font-family:var(--font-display);font-size:15px;letter-spacing:.12em}
+.chapter::after{content:"";flex:0 0 44px;height:1px;background:var(--gold)}
+.display{font-family:var(--font-display);font-weight:600;line-height:1.06;color:var(--green);letter-spacing:-.01em}
+.lead{font-family:var(--font-display);font-weight:500;font-size:clamp(19px,2vw,23px);line-height:1.5;color:var(--ink)}
+
+/* ---- buttons ---- */
+.btn{
+  display:inline-flex;align-items:center;gap:12px;
+  font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;
+  padding:18px 30px;border:1px solid var(--green);color:var(--green);
+  transition:background .35s var(--ease),color .35s var(--ease),border-color .35s var(--ease);
+}
+.btn .arr{transition:transform .35s var(--ease)}
+.btn:hover .arr{transform:translateX(5px)}
+.btn:hover{background:var(--green);color:var(--cream)}
+.btn.solid{background:var(--green);color:var(--cream)}
+.btn.solid:hover{background:var(--green-deep);border-color:var(--green-deep)}
+.btn.gold{background:var(--gold-bright);border-color:var(--gold-bright);color:#241C08}
+.btn.gold:hover{background:#E5BB63;border-color:#E5BB63}
+.btn.ghost-cream{border-color:var(--cream);color:var(--cream)}
+.btn.ghost-cream:hover{background:var(--cream);color:var(--green)}
+
+/* ---- nav ---- */
+header{position:fixed;inset:0 0 auto 0;z-index:100;border-bottom:1px solid transparent;
+  transition:background .4s var(--ease),border-color .4s var(--ease)}
+header.scrolled{background:rgba(255,255,246,.97);border-bottom-color:var(--line);backdrop-filter:blur(6px)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:88px}
+.logo-a{position:relative;display:block;height:48px;aspect-ratio:720/301}
+.logo-a img{position:absolute;inset:0;height:100%;width:auto;transition:opacity .35s var(--ease)}
+.lg-green{opacity:0}
+header.scrolled .lg-green{opacity:1}
+header.scrolled .lg-cream{opacity:0}
+.nav-links{display:flex;align-items:center;gap:42px}
+.nav-links a{font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);position:relative;padding:6px 0}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:100%;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease)}
+.nav-links a:hover::after{transform:scaleX(1)}
+.nav .btn-cta{padding:13px 22px;background:var(--green);border-color:var(--green);color:var(--cream)}
+.nav .btn-cta:hover{background:var(--green-deep);border-color:var(--green-deep)}
+.nav-toggle{display:none}
+@media(min-width:721px){
+  header:not(.scrolled) .nav-links a{color:var(--cream)}
+  header:not(.scrolled) .nav-links a::after{background:var(--gold-bright)}
+  header:not(.scrolled) .btn-cta{background:var(--gold-bright);border-color:var(--gold-bright);color:#241C08}
+  header:not(.scrolled) .btn-cta:hover{background:#E5BB63;border-color:#E5BB63}
+}
+
+/* ---- hero ---- */
+.hero{position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:center;justify-content:center;text-align:center;color:var(--cream);overflow:hidden;background:#B5A374;margin-top:0}
+.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 62%;transform:scale(1.06);animation:drift 15s var(--ease) forwards}
+@keyframes drift{to{transform:scale(1)}}
+.hero-scrim{position:absolute;inset:0;background:
+  linear-gradient(to bottom, rgba(18,22,8,.5) 0%, rgba(18,22,8,.26) 26%, rgba(18,22,8,.4) 60%, rgba(18,22,8,.66) 100%)}
+.hero-inner{position:relative;z-index:1;padding:150px var(--pad) 90px;max-width:900px;margin:0 auto}
+.hero .chapter{justify-content:center;color:var(--gold-bright)}
+.hero .chapter::after,.hero .chapter::before{content:"";flex:0 0 44px;height:1px;background:var(--gold-bright)}
+.hero h1{font-family:var(--font-display);font-weight:600;font-size:clamp(44px,6.6vw,88px);line-height:1.04;color:var(--cream);margin:26px 0 22px;text-wrap:balance;text-shadow:0 2px 30px rgba(12,16,5,.55)}
+.hero h1 em{font-style:italic;font-weight:500;color:#F2BE55;text-shadow:0 2px 26px rgba(12,16,5,.7)}
+.hero-sub{max-width:56ch;margin:0 auto 40px;font-size:17px;color:rgba(255,255,246,.92);text-shadow:0 1px 18px rgba(12,16,5,.5)}
+.hero-ctas{display:flex;gap:16px;flex-wrap:wrap;justify-content:center}
+.rise{opacity:0;transform:translateY(26px);animation:rise 1s var(--ease) forwards}
+.rise.d1{animation-delay:.15s}.rise.d2{animation-delay:.3s}.rise.d3{animation-delay:.45s}.rise.d4{animation-delay:.6s}
+@keyframes rise{to{opacity:1;transform:none}}
+
+/* ---- marquee ---- */
+.marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;padding:15px 0;background:var(--cream)}
+.marquee-track{display:flex;width:max-content;animation:slide 44s linear infinite}
+.marquee span{font-family:var(--font-display);font-style:italic;font-weight:500;font-size:19px;color:var(--green);white-space:nowrap;padding:0 30px;display:flex;align-items:center;gap:30px}
+.marquee span::after{content:"✦";font-size:10px;color:var(--gold);font-style:normal}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* ---- sections ---- */
+section{scroll-margin-top:88px}
+.band{padding:clamp(88px,11vw,148px) 0}
+.band.paper{background:var(--paper)}
+.sec-h2{font-size:clamp(34px,4.6vw,56px);margin-top:20px;max-width:18ch}
+
+/* ---- stats ---- */
+.stats{padding:clamp(52px,7vw,84px) 0}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr)}
+.stat{padding:14px 28px 4px 0;border-top:2px solid var(--gold)}
+.stat+.stat{margin-left:28px}
+.stat .n{font-family:var(--font-display);font-weight:600;font-size:clamp(38px,4.2vw,52px);color:var(--green);line-height:1}
+.stat .l{margin-top:11px;font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);max-width:22ch}
+
+/* ---- chapter 01: soil ---- */
+.soil-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(40px,6vw,96px);align-items:center}
+.framed{position:relative}
+.framed::before{content:"";position:absolute;inset:20px -20px -20px 20px;border:1px solid var(--gold);z-index:0}
+.framed img{position:relative;z-index:1;width:100%;object-fit:cover}
+.soil-grid .framed img{height:clamp(420px,50vw,620px)}
+.soil-copy p+p{margin-top:1.3em}
+.soil-copy .sec-h2{margin-bottom:24px}
+
+/* journey strip */
+.journey{margin-top:clamp(64px,8vw,104px);border-top:1px solid var(--line);padding-top:clamp(40px,5vw,56px)}
+.journey-track{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;position:relative}
+.journey-track::before{content:"";position:absolute;top:29px;left:9%;right:9%;height:1px;background:var(--line)}
+.jstep{text-align:center;position:relative}
+.jicon{width:58px;height:58px;border:1px solid var(--line);border-radius:50%;background:var(--cream);margin:0 auto 14px;display:grid;place-items:center;position:relative;z-index:1;transition:border-color .35s var(--ease),transform .35s var(--ease)}
+.jstep:hover .jicon{border-color:var(--gold);transform:translateY(-4px)}
+.jicon svg{width:26px;height:26px;stroke:var(--green);fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.jstep h4{font-family:var(--font-display);font-size:18px;font-weight:600;color:var(--ink);margin-bottom:5px}
+.jstep p{font-size:12.5px;line-height:1.55;color:var(--ink-soft);max-width:22ch;margin:0 auto}
+
+/* ---- statement ---- */
+.statement{padding:clamp(92px,12vw,158px) 0;text-align:center}
+.statement .qmark{font-family:var(--font-display);font-weight:700;font-size:clamp(84px,11vw,150px);line-height:.4;color:var(--gold);opacity:.55;display:block;margin-bottom:24px}
+.statement blockquote{font-family:var(--font-display);font-style:italic;font-weight:500;font-size:clamp(27px,4.2vw,50px);line-height:1.24;color:var(--green);max-width:22ch;margin:0 auto}
+.statement .after{margin-top:30px;font-size:12px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:var(--ink-soft)}
+
+/* ---- chapter 02: the range - showcase ---- */
+.show-grid{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:clamp(36px,5vw,72px);align-items:start;margin-top:clamp(44px,5vw,64px)}
+.show-visual{position:sticky;top:118px}
+.show-frame{position:relative;aspect-ratio:4/4.6;overflow:hidden}
+.show-frame::after{content:"";position:absolute;inset:20px -20px -20px 20px;border:1px solid var(--gold);pointer-events:none}
+.show-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 66%;opacity:0;transition:opacity .7s var(--ease)}
+.show-frame img.on{opacity:1}
+.show-count{
+  position:absolute;left:22px;bottom:22px;z-index:2;
+  background:rgba(255,255,246,.94);color:var(--gold);
+  font-size:11px;font-weight:600;letter-spacing:.26em;padding:9px 15px;
+}
+.prod-list{border-top:1px solid var(--line)}
+.prod{border-bottom:1px solid var(--line)}
+.prod-head{width:100%;display:flex;align-items:baseline;justify-content:space-between;gap:18px;text-align:left;padding:22px 4px;transition:padding .3s var(--ease)}
+.prod-head:hover{padding-left:12px}
+.prod-name{font-family:var(--font-display);font-weight:600;font-size:clamp(21px,2.2vw,27px);color:var(--ink);line-height:1.15;transition:color .3s var(--ease)}
+.prod.active .prod-name,.prod-head:hover .prod-name{color:var(--green)}
+.prod-kind{font-size:10.5px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);white-space:nowrap}
+.prod-body{max-height:0;overflow:hidden;transition:max-height .55s var(--ease)}
+.prod-body-in{padding:2px 4px 26px}
+.prod-body-in p{font-size:15px}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.chip{font-size:10.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--green);border:1px solid var(--green);padding:7px 13px;opacity:.85}
+.pmeta{margin-top:14px;font-size:12.5px;letter-spacing:.05em;color:var(--ink-soft)}
+.pmeta b{color:var(--green);font-weight:600}
+.beyond-line{margin-top:clamp(44px,5vw,60px);padding-top:32px;border-top:1px solid var(--line);font-size:14.5px;color:var(--ink-soft);max-width:76ch}
+.beyond-line b{font-family:var(--font-display);font-weight:600;font-size:19px;color:var(--green);display:block;margin-bottom:8px}
+
+/* ---- chapter 03: the standard - collage ---- */
+.std-grid{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:clamp(44px,6vw,96px);align-items:center}
+.collage{position:relative;padding:0 0 clamp(56px,7vw,84px) clamp(44px,6vw,72px)}
+.collage .big img{width:100%;height:clamp(400px,46vw,560px);object-fit:cover}
+.collage .small{
+  position:absolute;left:0;bottom:0;width:56%;
+  border:8px solid var(--cream);box-shadow:0 24px 60px rgba(34,30,20,.18);
+}
+.collage .small img{width:100%;height:clamp(180px,20vw,250px);object-fit:cover}
+.std-copy p+p{margin-top:1.3em}
+.std-points{margin-top:30px;border-top:1px solid var(--line)}
+.std-points li{display:flex;gap:16px;padding:16px 2px;border-bottom:1px solid var(--line);font-size:14.5px;color:var(--ink-soft)}
+.std-points b{color:var(--ink);font-weight:600;white-space:nowrap}
+.std-points li::before{content:"–";color:var(--gold);font-weight:600}
+
+/* ---- chapter 04: the voyage - full-bleed ---- */
+.voyage{position:relative;min-height:86vh;display:flex;align-items:center;color:var(--cream);overflow:hidden}
+.voyage-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.voyage-scrim{position:absolute;inset:0;background:linear-gradient(100deg, rgba(14,18,6,.82) 0%, rgba(14,18,6,.62) 42%, rgba(14,18,6,.18) 100%)}
+.voyage-inner{position:relative;z-index:1;padding:clamp(88px,11vw,140px) 0;max-width:560px}
+.voyage .chapter{color:var(--gold-bright)}
+.voyage .chapter::after{background:var(--gold-bright)}
+.voyage h2{font-family:var(--font-display);font-weight:600;color:var(--cream);font-size:clamp(36px,4.6vw,58px);line-height:1.06;margin:22px 0 18px}
+.voyage .lede{color:rgba(255,255,246,.86);font-size:15.5px}
+.corr-list{margin-top:28px;border-top:1px solid var(--line-cream)}
+.corr-list li{display:flex;justify-content:space-between;gap:18px;padding:15px 2px;border-bottom:1px solid var(--line-cream);font-size:13px}
+.corr-list b{font-weight:600;letter-spacing:.16em;text-transform:uppercase;font-size:11.5px;color:var(--gold-bright);white-space:nowrap}
+.corr-list span{color:rgba(255,255,246,.8);text-align:right}
+
+/* ---- steps ---- */
+.steps-head{margin-bottom:clamp(36px,4vw,52px)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.step{border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:32px 26px 38px;background:var(--paper);transition:background .35s var(--ease)}
+.step:hover{background:#FBF5E4}
+.step .num{font-family:var(--font-display);font-size:44px;font-weight:600;color:var(--gold);line-height:1}
+.step h3{font-size:13px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--ink);margin:18px 0 10px}
+.step p{font-size:14.5px;color:var(--ink-soft)}
+
+/* ---- contact ---- */
+.contact{background:var(--green);color:var(--cream);padding:clamp(96px,12vw,160px) 0;position:relative;overflow:hidden}
+.contact .chapter{color:var(--gold-bright)}
+.contact .chapter::after{background:var(--gold-bright)}
+.contact h2{font-family:var(--font-display);font-weight:600;color:var(--cream);font-size:clamp(42px,6.2vw,84px);line-height:1.04;margin:26px 0 22px;max-width:14ch}
+.contact h2 em{font-style:italic;font-weight:500;color:var(--gold-bright)}
+.contact .lede{max-width:52ch;color:rgba(255,255,246,.86);margin-bottom:44px}
+.contact-actions{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:54px}
+.contact-details{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;border-top:1px solid var(--line-cream);padding-top:36px}
+.cd h4{font-size:10.5px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,246,.65);margin-bottom:10px}
+.cd a,.cd span{font-family:var(--font-display);font-weight:500;font-size:21px;color:var(--cream)}
+.cd a{border-bottom:1px solid transparent;transition:border-color .3s var(--ease)}
+.cd a:hover{border-bottom-color:var(--gold-bright)}
+.contact-leaf{position:absolute;right:-60px;bottom:-80px;width:420px;opacity:.12;pointer-events:none}
+.contact-leaf path{fill:none;stroke:var(--gold-bright);stroke-width:1.4}
+
+/* ---- footer ---- */
+footer{background:var(--green-deep);color:rgba(255,255,246,.75);padding:44px 0;font-size:13px}
+.foot{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.foot .logo-img{height:44px;width:auto}
+.foot-nav{display:flex;gap:28px}
+.foot-nav a{font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:500;color:rgba(255,255,246,.8)}
+.foot-nav a:hover{color:var(--gold-bright)}
+.attribution{margin-top:30px;padding-top:24px;border-top:1px solid rgba(255,255,246,.16);font-size:12px;color:rgba(255,255,246,.6);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+/* ---- reveal ---- */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.reveal.visible{opacity:1;transform:none}
+
+/* ---- responsive ---- */
+@media(max-width:980px){
+  .stats-grid{grid-template-columns:repeat(2,1fr);gap:34px 0}
+  .stat+.stat{margin-left:0}
+  .stat:nth-child(even){margin-left:28px}
+  .soil-grid,.std-grid{grid-template-columns:1fr}
+  .soil-grid .framed img{height:420px}
+  .show-grid{grid-template-columns:1fr}
+  .show-visual{position:static;margin-bottom:8px}
+  .show-frame{aspect-ratio:4/3.4}
+  .journey-track{grid-template-columns:repeat(2,1fr);row-gap:36px}
+  .journey-track::before{display:none}
+  .voyage-scrim{background:linear-gradient(to top, rgba(14,18,6,.86) 0%, rgba(14,18,6,.55) 60%, rgba(14,18,6,.25) 100%)}
+  .steps{grid-template-columns:repeat(2,1fr)}
+  .contact-details{grid-template-columns:1fr}
+  .collage{padding-left:28px}
+}
+@media(max-width:720px){
+  .nav-links{position:fixed;inset:88px 0 auto 0;background:var(--cream);border-bottom:1px solid var(--line);
+    flex-direction:column;align-items:flex-start;padding:28px var(--pad) 34px;gap:24px;
+    transform:translateY(-130%);transition:transform .45s var(--ease)}
+  .nav-links.openm{transform:translateY(0)}
+  .nav-links a{color:var(--ink)!important}
+  .nav-toggle{display:block;font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--cream);border:1px solid var(--cream);padding:12px 18px;transition:color .35s var(--ease),border-color .35s var(--ease)}
+  header.scrolled .nav-toggle{color:var(--green);border-color:var(--green)}
+  .nav .btn-cta{display:none}
+  .journey-track{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr}
+  .stats-grid{grid-template-columns:1fr 1fr}
+  .logo-a{height:40px}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .reveal,.rise{opacity:1!important;transform:none!important}
+  .hero-bg{transform:none!important}
+  html{scroll-behavior:auto}
+}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+</style>
+</head>
+
+<body>
+
+<!-- ================= NAV ================= -->
+<header id="header">
+  <div class="wrap nav">
+    <a href="#home" class="logo-a" aria-label="Meadows Agri Exports — home">
+      <img class="lg-cream" src="logo-cream.png" alt="Meadows Agri Exports">
+      <img class="lg-green" src="logo-green.png" alt="">
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#home">Home</a>
+      <a href="#products">Products</a>
+      <a href="#contact">Contact&nbsp;Us</a>
+    </nav>
+    <a href="#contact" class="btn btn-cta">Get in Touch <span class="arr">&rarr;</span></a>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu">Menu</button>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="home">
+  <img class="hero-bg" decoding="async" fetchpriority="high" src="hero-field.jpg" alt="Healthy crop rows in rich dark soil at golden dawn">
+  <div class="hero-scrim" aria-hidden="true"></div>
+  <div class="hero-inner">
+    <div class="chapter rise d1"><span>Natural Soil Inputs &middot; India</span></div>
+    <h1 class="rise d2">Nature&rsquo;s soil builders, <em>exported from India.</em></h1>
+    <p class="hero-sub rise d3">Neem and botanical oil-cakes, cold-pressed oils, and organic soil inputs, sourced at origin, graded honestly, and handled end to end for buyers around the world.</p>
+    <div class="hero-ctas rise d4">
+      <a href="#contact" class="btn gold">Get in Touch <span class="arr">&rarr;</span></a>
+      <a href="#products" class="btn ghost-cream">Explore the Range</a>
+    </div>
+  </div>
+</section>
+
+<!-- marquee -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track" id="marqueeTrack">
+    <span>Neem Cake &amp; Powder</span><span>Karanja (Honge) Cake</span><span>Mixed Oil Cake</span><span>Castor De-Oiled Cake</span><span>Neem Oil</span><span>Karanj Oil</span><span>Organic Soil Inputs</span><span>Growing Media</span>
+  </div>
+</div>
+
+<!-- ================= AT A GLANCE ================= -->
+<section class="stats" aria-label="Meadows at a glance">
+  <div class="wrap">
+    <div class="stats-grid">
+      <div class="stat reveal"><div class="n">100%</div><div class="l">Plant-derived, across the entire range</div></div>
+      <div class="stat reveal"><div class="n">1,000+</div><div class="l">Years of neem in Indian agriculture</div></div>
+      <div class="stat reveal"><div class="n">25+</div><div class="l">Further natural inputs on request</div></div>
+      <div class="stat reveal"><div class="n">&le;10%</div><div class="l">Moisture standard, graded batch by batch</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CH 01 · THE SOIL ================= -->
+<section class="band paper" id="story">
+  <div class="wrap">
+    <div class="soil-grid">
+      <div class="framed reveal">
+        <img loading="lazy" decoding="async" src="story-soil-hands.jpg" alt="Weathered hands holding rich dark organic soil over a green field">
+      </div>
+      <div class="soil-copy reveal">
+        <div class="chapter"><span class="n">01</span><span>The Soil</span></div>
+        <h2 class="display sec-h2">Some things don&rsquo;t need reinventing.</h2>
+        <p class="lead">Long before fertiliser came in bags, Indian growers fed their fields with what the land gave back: the pressed cakes of neem, karanja and castor, returned to the soil after their oils were drawn.</p>
+        <p>It is one of the oldest habits in agriculture, and it has never stopped working. Meadows Agri Exports exists to carry that tradition outward: we work with established processors across India, mills that have pressed these seeds for generations, and bring their work up to the standard the world expects.</p>
+        <p>From a nursery&rsquo;s potting bench to a plantation&rsquo;s open rows, what we ship does one quiet, dependable thing: it feeds the soil, not just the season.</p>
+      </div>
+    </div>
+
+    <!-- the seed's journey -->
+    <div class="journey">
+      <div class="journey-track">
+        <div class="jstep reveal">
+          <div class="jicon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 21v-7"/><path d="M12 14C12 10 9 8 5.5 8c.5 4 3 6 6.5 6z"/><path d="M12 14c0-4.5 3-7 7-7-.5 4.5-3 7-7 7z"/></svg></div>
+          <h4>The Seed</h4><p>Gathered where it has always grown.</p>
+        </div>
+        <div class="jstep reveal">
+          <div class="jicon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h16"/><path d="M4 19h16"/><path d="M12 8v5"/><path d="M9.5 11 12 13.5 14.5 11"/></svg></div>
+          <h4>The Press</h4><p>Cold-pressed at origin, nothing added.</p>
+        </div>
+        <div class="jstep reveal">
+          <div class="jicon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 19c1.5-5 4.5-7 8-7s6.5 2 8 7z"/><path d="M3 19h18"/><path d="M17 3c1.5 1.9 2.6 3.3 2.6 4.7a2.6 2.6 0 1 1-5.2 0C14.4 6.3 15.5 4.9 17 3z"/></svg></div>
+          <h4>Cake &amp; Oil</h4><p>Two gifts from a single seed.</p>
+        </div>
+        <div class="jstep reveal">
+          <div class="jicon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6.5 5.5h11v15h-11z"/><path d="M10 4h4v3h-4z"/><path d="M9.5 13.5l2 2 3.5-4"/></svg></div>
+          <h4>The Grade</h4><p>Checked and confirmed to your spec.</p>
+        </div>
+        <div class="jstep reveal">
+          <div class="jicon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3.5 15.5h17L18 20H6z"/><path d="M8 15.5v-4h3.5v4"/><path d="M12.5 15.5v-6H16v6"/><path d="M4 22q2-1.6 4 0t4 0 4 0 4 0"/></svg></div>
+          <h4>The Voyage</h4><p>Handled end to end, till it reaches you.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STATEMENT ================= -->
+<section class="statement" aria-label="Our position">
+  <div class="wrap">
+    <span class="qmark reveal" aria-hidden="true">&ldquo;</span>
+    <blockquote class="reveal">We are not the oldest name in this trade, and we don&rsquo;t pretend to be. What we offer is care: in what we source, how we grade it, and how it reaches you.</blockquote>
+    <div class="after reveal">Meadows Agri Exports</div>
+  </div>
+</section>
+
+<!-- ================= CH 02 · THE RANGE ================= -->
+<section class="band paper" id="products">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="chapter"><span class="n">02</span><span>The Range</span></div>
+      <h2 class="display sec-h2">Botanical inputs, graded for export.</h2>
+    </div>
+
+    <div class="show-grid">
+      <div class="show-visual reveal">
+        <div class="show-frame">
+          <img id="showA" class="on" src="product-neem-cake.jpg" alt="Selected product photograph">
+          <img id="showB" alt="" aria-hidden="true">
+          <span class="show-count" id="showCount">01 / 06</span>
+        </div>
+      </div>
+
+      <ul class="prod-list reveal" id="prodList">
+        <li class="prod active" data-img="product-neem-cake.jpg">
+          <button class="prod-head" aria-expanded="true">
+            <span class="prod-name">Neem Cake &amp; Powder</span>
+            <span class="prod-kind">Cake &middot; Flagship</span>
+          </button>
+          <div class="prod-body">
+            <div class="prod-body-in">
+              <p>The dense, plant-derived manure left when neem seeds are pressed for oil. Worked into pots, beds or open fields, it releases nitrogen and organic matter slowly, for steadier feeding, richer soil life and stronger growth season after season, while helping every other input work harder. Also milled into a fine, versatile powder for potting mixes, composts and custom blends.</p>
+              <div class="chips"><span class="chip">Garden &amp; Greenhouse</span><span class="chip">Field &amp; Plantation</span></div>
+              <p class="pmeta"><b>Forms</b> powder &middot; granule &middot; pellet &nbsp;&nbsp;<b>Packing</b> 25 / 50 kg or repackable &nbsp;&nbsp;<b>Specs</b> on request</p>
+            </div>
+          </div>
+        </li>
+
+        <li class="prod" data-img="product-karanja-cake.jpg">
+          <button class="prod-head" aria-expanded="false">
+            <span class="prod-name">Karanja (Honge) Cake</span>
+            <span class="prod-kind">Cake</span>
+          </button>
+          <div class="prod-body">
+            <div class="prod-body-in">
+              <p>Pressed from the seeds of the Pongamia tree, one of India&rsquo;s most trusted natural soil manures. Dense with organic matter and slow-release nutrients, it feeds the soil steadily, enriches its structure and supports strong root growth, holding nutrients and moisture so plants are fed evenly over weeks.</p>
+              <div class="chips"><span class="chip">Garden &amp; Greenhouse</span><span class="chip">Field &amp; Plantation</span></div>
+              <p class="pmeta"><b>Forms</b> powder &middot; granule &nbsp;&nbsp;<b>Packing</b> 25 / 50 kg or repackable &nbsp;&nbsp;<b>Specs</b> on request</p>
+            </div>
+          </div>
+        </li>
+
+        <li class="prod" data-img="product-mixed-cake.jpg">
+          <button class="prod-head" aria-expanded="false">
+            <span class="prod-name">Mixed Oil Cake</span>
+            <span class="prod-kind">Blend</span>
+          </button>
+          <div class="prod-body">
+            <div class="prod-body-in">
+              <p>A balanced blend of premium oil-seed cakes of neem, karanja, pongamia, mahua and castor. Each cake feeds the soil a little differently; blended, they deliver a fuller nutrient profile and a steady release of organic matter. One manure that does the work of several.</p>
+              <div class="chips"><span class="chip">Garden &amp; Greenhouse</span><span class="chip">Field &amp; Plantation</span></div>
+              <p class="pmeta"><b>Blend ratios</b> to requirement &nbsp;&nbsp;<b>Packing</b> 25 / 50 kg or repackable &nbsp;&nbsp;<b>Specs</b> on request</p>
+            </div>
+          </div>
+        </li>
+
+        <li class="prod" data-img="product-castor-cake.jpg">
+          <button class="prod-head" aria-expanded="false">
+            <span class="prod-name">Castor De-Oiled Cake</span>
+            <span class="prod-kind">Cake</span>
+          </button>
+          <div class="prod-body">
+            <div class="prod-body-in">
+              <p>One of the richest natural sources of organic nitrogen. It feeds plants steadily as it breaks down, driving lush foliage and healthy development without the harshness of synthetic fertilisers. Fast-acting among organic manures, yet gentle on the soil.</p>
+              <div class="chips"><span class="chip">Garden &amp; Greenhouse</span><span class="chip">Field &amp; Plantation</span></div>
+              <p class="pmeta"><b>Forms</b> powder &middot; granule &nbsp;&nbsp;<b>Packing</b> 25 / 50 kg or repackable &nbsp;&nbsp;<b>Specs</b> on request</p>
+            </div>
+          </div>
+        </li>
+
+        <li class="prod" data-img="product-neem-oil.jpg">
+          <button class="prod-head" aria-expanded="false">
+            <span class="prod-name">Neem Oil</span>
+            <span class="prod-kind">Oil</span>
+          </button>
+          <div class="prod-body">
+            <div class="prod-body-in">
+              <p>Cold-pressed from neem seed: golden, unrefined, and one of India&rsquo;s most versatile botanical extracts. Rich in the tree&rsquo;s naturally occurring compounds and graded by azadirachtin content, so formulators, blenders and natural personal-care makers can specify exactly the profile they need.</p>
+              <div class="chips"><span class="chip">Formulation &amp; Industry</span><span class="chip">Cosmetic &amp; Personal Care</span></div>
+              <p class="pmeta"><b>Process</b> cold-pressed &nbsp;&nbsp;<b>Grading</b> azadirachtin (ppm on request) &nbsp;&nbsp;<b>Packing</b> HDPE drums or as specified</p>
+            </div>
+          </div>
+        </li>
+
+        <li class="prod" data-img="product-karanj-oil.jpg">
+          <button class="prod-head" aria-expanded="false">
+            <span class="prod-name">Karanj Oil</span>
+            <span class="prod-kind">Oil</span>
+          </button>
+          <div class="prod-body">
+            <div class="prod-body-in">
+              <p>A rich, traditional botanical oil pressed from Pongamia seed, carrying the tree&rsquo;s naturally occurring compounds, including karanjin. Supplied cold-pressed and unrefined to preserve its natural quality, a dependable base for buyers formulating their own natural products.</p>
+              <div class="chips"><span class="chip">Formulation &amp; Industry</span><span class="chip">Cosmetic &amp; Personal Care</span></div>
+              <p class="pmeta"><b>Process</b> cold-pressed &nbsp;&nbsp;<b>Grading</b> karanjin stated as specification &nbsp;&nbsp;<b>Packing</b> HDPE drums or as specified</p>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <p class="beyond-line reveal">
+      <b>Beyond the range</b>
+      Vermicompost &middot; organic composts &amp; manures &middot; bonemeal &middot; rock phosphate &middot; humic &amp; seaweed biostimulants &middot; amino acid boosters &middot; micronutrients &amp; minerals &middot; cocopeat &amp; coir growing media &middot; microbial inoculants, and more, available to established buyers on request.
+    </p>
+  </div>
+</section>
+
+<!-- ================= CH 03 · THE STANDARD ================= -->
+<section class="band" id="promise">
+  <div class="wrap">
+    <div class="std-grid">
+      <div class="collage reveal">
+        <div class="big"><img loading="lazy" decoding="async" src="standard-pallet.jpg" alt="A neat pallet of white export sacks in a bright warehouse"></div>
+        <div class="small"><img loading="lazy" decoding="async" src="standard-scoop.jpg" alt="A gloved hand sampling brown granular oil-cake with a steel scoop"></div>
+      </div>
+      <div class="std-copy reveal">
+        <div class="chapter"><span class="n">03</span><span>The Standard</span></div>
+        <h2 class="display sec-h2">Tested, reliable, export-ready.</h2>
+        <p>Behind every Meadows shipment is a simple promise: consistent quality, honestly graded, and ready for the world. We source from established, trusted processors and check our products before they&rsquo;re dispatched, so what you order is what arrives, batch after batch.</p>
+        <p>Each consignment is prepared with the proper documentation for smooth international shipping, and we handle those details so you don&rsquo;t have to.</p>
+        <ul class="std-points">
+          <li><b>Consistent quality</b> checked and graded batch by batch.</li>
+          <li><b>Clean documentation</b> prepared to move smoothly across borders.</li>
+          <li><b>Shipped to spec</b> your requirements confirmed before dispatch.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CH 04 · THE VOYAGE ================= -->
+<section class="voyage" id="reach">
+  <img class="voyage-bg" loading="lazy" decoding="async" src="voyage-aerial.jpg" alt="Aerial view of a container yard at golden hour">
+  <div class="voyage-scrim" aria-hidden="true"></div>
+  <div class="wrap" style="width:100%;">
+    <div class="voyage-inner reveal">
+      <div class="chapter"><span class="n">04</span><span>The Voyage</span></div>
+      <h2>From India, outward.</h2>
+      <p class="lede">Our range is built for growers, blenders and importers across three corridors, with the paperwork, packing and freight handled from our side of the water.</p>
+      <ul class="corr-list">
+        <li><b>South-East Asia</b><span>Thailand &middot; Malaysia &middot; Indonesia &middot; Philippines</span></li>
+        <li><b>The Gulf</b><span>Oman &middot; Qatar &middot; Kuwait &middot; Saudi Arabia</span></li>
+        <li><b>Northern Europe</b><span>The Netherlands</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ================= HOW IT WORKS ================= -->
+<section class="band paper" id="how">
+  <div class="wrap">
+    <div class="steps-head reveal">
+      <div class="chapter"><span>Working With Us</span></div>
+      <h2 class="display sec-h2">Four steps, start to shipment.</h2>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><div class="num">1</div><h3>Enquiry</h3><p>Tell us the product, the volume, and the destination. A short message is enough to begin.</p></div>
+      <div class="step reveal"><div class="num">2</div><h3>Specification</h3><p>We confirm the grade, form and packing that fit your programme, in plain terms.</p></div>
+      <div class="step reveal"><div class="num">3</div><h3>Sample &amp; quote</h3><p>Samples on request, and a clear quotation with terms that suit your side of the water.</p></div>
+      <div class="step reveal"><div class="num">4</div><h3>Shipment</h3><p>Graded, packed, documented and dispatched, handled end to end until it reaches you.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="contact" id="contact">
+  <svg class="contact-leaf" viewBox="0 0 400 620" aria-hidden="true">
+    <path d="M210 610 C 200 480, 196 340, 202 200 C 205 130, 212 70, 224 18"/>
+    <path d="M206 512 C 160 500, 118 506, 84 534 C 118 556, 168 552, 206 522"/>
+    <path d="M212 496 C 258 480, 302 482, 338 506 C 306 530, 254 530, 212 506"/>
+    <path d="M202 418 C 158 404, 116 408, 82 434 C 116 456, 166 454, 202 428"/>
+    <path d="M208 402 C 252 386, 296 386, 332 410 C 300 434, 250 436, 208 412"/>
+    <path d="M200 324 C 158 310, 118 312, 86 338 C 120 358, 166 358, 200 334"/>
+    <path d="M206 308 C 248 292, 290 292, 324 314 C 294 338, 246 340, 206 318"/>
+  </svg>
+  <div class="wrap">
+    <div class="chapter reveal"><span>Contact Us</span></div>
+    <h2 class="reveal">Let&rsquo;s grow <em>something together.</em></h2>
+    <p class="lede reveal">For samples, specifications or a quotation, or simply to talk through what your soil programme needs, we&rsquo;d be glad to hear from you.</p>
+    <div class="contact-actions reveal">
+      <!-- PLACEHOLDER: replace with the real business email once the domain exists -->
+      <a class="btn gold" href="mailto:info@meadowsagriexports.com">Write to us <span class="arr">&rarr;</span></a>
+      <!-- PLACEHOLDER: replace with the real WhatsApp number -->
+      <a class="btn ghost-cream" href="https://wa.me/916355098820" target="_blank" rel="noopener">WhatsApp us</a>
+    </div>
+    <div class="contact-details reveal">
+      <div class="cd"><h4>Email</h4><a href="mailto:info@meadowsagriexports.com">info@meadowsagriexports.com</a></div>
+      <div class="cd"><h4>Phone &amp; WhatsApp</h4><a href="tel:+916355098820">+91&nbsp;63550&nbsp;98820</a></div>
+      <div class="cd"><h4>Based in</h4><span>India</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <img class="logo-img" src="logo-cream.png" alt="Meadows Agri Exports">
+      <nav class="foot-nav">
+        <a href="#home">Home</a>
+        <a href="#products">Products</a>
+        <a href="#contact">Contact&nbsp;Us</a>
+      </nav>
+    </div>
+    <div class="attribution">
+      <span>Meadows Agri Exports &middot; Natural soil inputs, exported from India</span>
+      <span>&copy; <span id="year"></span> Meadows Agri Exports</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* nav */
+const header = document.getElementById('header');
+const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 40);
+onScroll();
+window.addEventListener('scroll', onScroll, {passive:true});
+
+const navToggle = document.getElementById('navToggle');
+const navLinks = document.getElementById('navLinks');
+navToggle.addEventListener('click', () => {
+  const open = navLinks.classList.toggle('openm');
+  navToggle.textContent = open ? 'Close' : 'Menu';
+});
+navLinks.querySelectorAll('a').forEach(a =>
+  a.addEventListener('click', () => { navLinks.classList.remove('openm'); navToggle.textContent='Menu'; })
+);
+
+/* marquee */
+const track = document.getElementById('marqueeTrack');
+track.innerHTML += track.innerHTML;
+
+/* reveals */
+const io = new IntersectionObserver(es => {
+  es.forEach(e => { if (e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } });
+}, {threshold:.14});
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+/* ---- product showcase ---- */
+const prods = Array.from(document.querySelectorAll('#prodList .prod'));
+const imgA = document.getElementById('showA');
+const imgB = document.getElementById('showB');
+const counter = document.getElementById('showCount');
+let frontIsA = true;
+
+function pad(n){ return String(n).padStart(2,'0'); }
+
+function openProd(target){
+  const idx = prods.indexOf(target);
+  prods.forEach(p => {
+    const body = p.querySelector('.prod-body');
+    const head = p.querySelector('.prod-head');
+    if (p === target){
+      p.classList.add('active');
+      head.setAttribute('aria-expanded','true');
+      body.style.maxHeight = body.scrollHeight + 'px';
+    } else {
+      p.classList.remove('active');
+      head.setAttribute('aria-expanded','false');
+      body.style.maxHeight = null;
+    }
+  });
+  /* crossfade image */
+  const nextSrc = target.dataset.img;
+  const front = frontIsA ? imgA : imgB;
+  const back  = frontIsA ? imgB : imgA;
+  if (front.getAttribute('src') !== nextSrc){
+    back.src = nextSrc;
+    back.classList.add('on');
+    front.classList.remove('on');
+    frontIsA = !frontIsA;
+  }
+  counter.textContent = pad(idx+1) + ' / ' + pad(prods.length);
+}
+
+prods.forEach(p => {
+  p.querySelector('.prod-head').addEventListener('click', () => openProd(p));
+});
+/* initialise first product open */
+openProd(prods[0]);
+
+/* footer year */
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
