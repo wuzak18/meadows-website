@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#80714d">
 <title>Meadows Agri Exports: Natural Soil Inputs from India</title>
 <meta name="description" content="Neem and botanical oil-cakes, cold-pressed oils, and organic soil inputs, sourced in India, graded honestly, and shipped worldwide. Meadows Agri Exports, a division of Globira International Trading Co.">
 
@@ -614,7 +615,12 @@ footer{background:var(--green-deep);color:rgba(255,255,246,.75);padding:44px 0;f
 <script>
 /* nav */
 const header = document.getElementById('header');
-const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 40);
+const themeColor = document.querySelector('meta[name="theme-color"]');
+const onScroll = () => {
+  const scrolled = window.scrollY > 40;
+  header.classList.toggle('scrolled', scrolled);
+  themeColor.setAttribute('content', scrolled ? '#FFFFF6' : '#80714d');
+};
 onScroll();
 window.addEventListener('scroll', onScroll, {passive:true});
 
