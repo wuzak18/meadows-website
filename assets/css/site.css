@@ -659,15 +659,22 @@ html.js .panel[hidden] { display: none; }
 .foot__end { margin-left: auto; }
 
 /* --------------------------------------------------------------------------
-   19. MOTION, reveal only
-   -------------------------------------------------------------------------- */
-html.js .rv { opacity: 0; transform: translateY(18px); }
-html.js .rv.in { opacity: 1; transform: none; transition: opacity .8s ease var(--d, 0s), transform .8s ease var(--d, 0s); }
+   19. MOTION
 
+   There is no scroll reveal, on purpose. Two builds shipped one and both
+   ended up with a page that looked broken: content was hidden by CSS the
+   moment the document parsed, and stayed hidden if the script failed to load
+   or the observer was slow to deliver. Fading text in was never asked for,
+   and the design does not depend on it. The .rv classes are left in the
+   markup as inert hooks; nothing hides them.
+
+   If a reveal is ever wanted again: content must start visible, the hiding
+   class must be added by the script itself only after it has proved it can
+   reveal, and there must be a timer that reveals everything regardless.
+   -------------------------------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  html.js .rv, html.js .rv.in { opacity: 1; transform: none; transition: none; }
-  .nav, .nav__panel, .wm img { transition: none; }
+  .nav, .nav__panel, .wm img, .tab, .pick, .btn { transition: none; }
 }
 
 /* --------------------------------------------------------------------------

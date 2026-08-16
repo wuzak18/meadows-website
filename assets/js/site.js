@@ -4,8 +4,6 @@
 (function () {
   'use strict';
 
-  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
   /* ---- nav is solid by default; it goes transparent only while the hero
         is still behind it. See the note in the stylesheet: inverted so a
         blocked script leaves a readable bar rather than an invisible one. */
@@ -80,19 +78,6 @@
     });
     select(0);
   });
-
-  /* ---- reveal on entry ------------------------------------------------ */
-  var rv = document.querySelectorAll('.rv');
-  if (!('IntersectionObserver' in window) || reduced) {
-    for (var i = 0; i < rv.length; i++) rv[i].classList.add('in');
-  } else {
-    var io = new IntersectionObserver(function (es) {
-      es.forEach(function (en) {
-        if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
-      });
-    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.04 });
-    for (var j = 0; j < rv.length; j++) io.observe(rv[j]);
-  }
 
   /* ---- which section am I in. Marks a nav link, changes no content ---- */
   var links = [].slice.call(document.querySelectorAll('.nav__links a[href^="#"]'));
