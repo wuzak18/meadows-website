@@ -1,0 +1,5 @@
+# Internal / operational docs — must NOT be published to the public site
+HANDOVER.md
+
+# Local-only tooling
+.claude/
