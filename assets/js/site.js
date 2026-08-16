@@ -1,42 +1,62 @@
-/* Meadows Agri Exports, progressive enhancement only.
-   The page is complete and usable with this file blocked: every panel is
-   visible, every link works, nothing is hidden waiting to be revealed. */
+/* Meadows Agri Exports. Progressive enhancement only.
+   With this file blocked the page is still complete: every panel is on the
+   page, every link works, nothing waits to be revealed. */
 (function () {
   'use strict';
 
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  /* ---- nav is solid by default; it goes transparent only while the hero
+        is still behind it. See the note in the stylesheet: inverted so a
+        blocked script leaves a readable bar rather than an invisible one. */
+  var nav = document.querySelector('.nav');
+  var hero = document.querySelector('.hero');
+  if (nav) {
+    var setNav = function () {
+      var trigger = hero ? hero.offsetHeight - 120 : 80;
+      nav.classList.toggle('nav--top', window.scrollY <= trigger);
+    };
+    setNav();
+    window.addEventListener('scroll', setNav, { passive: true });
+    window.addEventListener('resize', setNav);
+  }
+
   /* ---- mobile menu ---------------------------------------------------- */
   var burger = document.querySelector('.nav__burger');
-  var panel = document.getElementById('menu');
-  if (burger && panel) {
+  var menu = document.getElementById('menu');
+  if (burger && menu) {
     var setMenu = function (open) {
-      panel.setAttribute('data-open', open ? 'true' : 'false');
+      menu.setAttribute('data-open', open ? 'true' : 'false');
+      // inert, not the CSS transition, is what keeps a closed panel out of the
+      // tab order and the accessibility tree. visibility is delayed so the
+      // slide-out is not cut short, and a delayed transition is not something
+      // focus management should depend on.
+      if ('inert' in menu) menu.inert = !open; else menu.setAttribute('aria-hidden', String(!open));
       burger.setAttribute('aria-expanded', open ? 'true' : 'false');
       burger.textContent = open ? 'Close' : 'Menu';
       document.body.style.overflow = open ? 'hidden' : '';
     };
     setMenu(false);
     burger.addEventListener('click', function () {
-      setMenu(panel.getAttribute('data-open') !== 'true');
+      setMenu(menu.getAttribute('data-open') !== 'true');
     });
-    panel.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
+    menu.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
     document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && panel.getAttribute('data-open') === 'true') {
+      if (e.key === 'Escape' && menu.getAttribute('data-open') === 'true') {
         setMenu(false);
         burger.focus();
       }
     });
   }
 
-  /* ---- material states: selected by the reader, never by scroll -------
-     Panels carry no `hidden` in the markup, so with JS off all three are on
-     the page at once. Only once we know we can offer the control do we take
-     the other two away. */
-  var tablist = document.querySelector('[role="tablist"]');
-  if (tablist) {
-    var tabs = [].slice.call(tablist.querySelectorAll('[role="tab"]'));
+  /* ---- every tablist on the page: the range and the material states ---
+     Panels carry no `hidden` in the markup, so without JS they are all
+     present. Only once the control exists do we take the others away.
+     Selection is made by the reader. Scrolling never touches it. */
+  [].slice.call(document.querySelectorAll('[role="tablist"]')).forEach(function (list) {
+    var tabs = [].slice.call(list.querySelectorAll('[role="tab"]'));
     var panels = tabs.map(function (t) { return document.getElementById(t.getAttribute('aria-controls')); });
+    if (!tabs.length) return;
 
     var select = function (i, focus) {
       tabs.forEach(function (t, n) {
@@ -59,31 +79,30 @@
       });
     });
     select(0);
-  }
+  });
 
   /* ---- reveal on entry ------------------------------------------------ */
   var rv = document.querySelectorAll('.rv');
   if (!('IntersectionObserver' in window) || reduced) {
     for (var i = 0; i < rv.length; i++) rv[i].classList.add('in');
   } else {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (en) {
         if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
       });
-    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.05 });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.04 });
     for (var j = 0; j < rv.length; j++) io.observe(rv[j]);
   }
 
-  /* ---- which section am I in: marks the nav link, changes no content -- */
+  /* ---- which section am I in. Marks a nav link, changes no content ---- */
   var links = [].slice.call(document.querySelectorAll('.nav__links a[href^="#"]'));
   if (links.length && 'IntersectionObserver' in window) {
     var byId = {};
     links.forEach(function (a) { byId[a.getAttribute('href').slice(1)] = a; });
-    var seen = new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) {
+    var spy = new IntersectionObserver(function (es) {
+      es.forEach(function (en) {
         var a = byId[en.target.id];
-        if (!a) return;
-        if (en.isIntersecting) {
+        if (a && en.isIntersecting) {
           links.forEach(function (l) { l.removeAttribute('aria-current'); });
           a.setAttribute('aria-current', 'true');
         }
@@ -91,7 +110,7 @@
     }, { rootMargin: '-45% 0px -50% 0px' });
     Object.keys(byId).forEach(function (id) {
       var el = document.getElementById(id);
-      if (el) seen.observe(el);
+      if (el) spy.observe(el);
     });
   }
 })();
