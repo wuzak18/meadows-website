@@ -1,19 +1,10 @@
-/* Meadows Agri Exports — progressive enhancement only.
-   Everything on the page is readable and usable with this file blocked. */
+/* Meadows Agri Exports, progressive enhancement only.
+   The page is complete and usable with this file blocked: every panel is
+   visible, every link works, nothing is hidden waiting to be revealed. */
 (function () {
   'use strict';
 
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  /* ---- nav: solid once scrolled off the masthead ---------------------- */
-  var nav = document.querySelector('.nav');
-  if (nav) {
-    var setNav = function () {
-      nav.classList.toggle('nav--set', window.scrollY > 24);
-    };
-    setNav();
-    window.addEventListener('scroll', setNav, { passive: true });
-  }
 
   /* ---- mobile menu ---------------------------------------------------- */
   var burger = document.querySelector('.nav__burger');
@@ -29,9 +20,7 @@
     burger.addEventListener('click', function () {
       setMenu(panel.getAttribute('data-open') !== 'true');
     });
-    panel.addEventListener('click', function (e) {
-      if (e.target.closest('a')) setMenu(false);
-    });
+    panel.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && panel.getAttribute('data-open') === 'true') {
         setMenu(false);
@@ -40,52 +29,69 @@
     });
   }
 
-  /* ---- scroll reveal -------------------------------------------------- */
-  var targets = document.querySelectorAll('.reveal');
+  /* ---- material states: selected by the reader, never by scroll -------
+     Panels carry no `hidden` in the markup, so with JS off all three are on
+     the page at once. Only once we know we can offer the control do we take
+     the other two away. */
+  var tablist = document.querySelector('[role="tablist"]');
+  if (tablist) {
+    var tabs = [].slice.call(tablist.querySelectorAll('[role="tab"]'));
+    var panels = tabs.map(function (t) { return document.getElementById(t.getAttribute('aria-controls')); });
+
+    var select = function (i, focus) {
+      tabs.forEach(function (t, n) {
+        t.setAttribute('aria-selected', n === i ? 'true' : 'false');
+        t.setAttribute('tabindex', n === i ? '0' : '-1');
+        if (panels[n]) panels[n].hidden = n !== i;
+      });
+      if (focus) tabs[i].focus();
+    };
+
+    tabs.forEach(function (t, i) {
+      t.addEventListener('click', function () { select(i); });
+      t.addEventListener('keydown', function (e) {
+        var n = null;
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') n = (i + 1) % tabs.length;
+        if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') n = (i - 1 + tabs.length) % tabs.length;
+        if (e.key === 'Home') n = 0;
+        if (e.key === 'End') n = tabs.length - 1;
+        if (n !== null) { e.preventDefault(); select(n, true); }
+      });
+    });
+    select(0);
+  }
+
+  /* ---- reveal on entry ------------------------------------------------ */
+  var rv = document.querySelectorAll('.rv');
   if (!('IntersectionObserver' in window) || reduced) {
-    for (var i = 0; i < targets.length; i++) targets[i].classList.add('in');
+    for (var i = 0; i < rv.length; i++) rv[i].classList.add('in');
   } else {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) {
-        if (en.isIntersecting) {
-          en.target.classList.add('in');
-          io.unobserve(en.target);
-        }
+        if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
       });
-    }, { rootMargin: '0px 0px -12% 0px', threshold: 0.06 });
-    for (var j = 0; j < targets.length; j++) io.observe(targets[j]);
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.05 });
+    for (var j = 0; j < rv.length; j++) io.observe(rv[j]);
   }
 
-  /* ---- hydration test: three states driven by scroll position --------
-     The frame is sticky for the length of the section; progress through the
-     section picks the state. CSS handles the cross-fade. Below 860px, and
-     under reduced motion, the CSS shows all three states stacked and this
-     writes an attribute nothing reads. */
-  var hyd = document.querySelector('.hyd');
-  var frame = hyd && hyd.querySelector('.hyd__frame');
-  if (hyd && frame && !reduced) {
-    var states = frame.querySelectorAll('.hyd__st').length || 3;
-    var last = -1;
-    var track = function () {
-      var box = hyd.getBoundingClientRect();
-      var span = hyd.offsetHeight - window.innerHeight;
-      if (span <= 0) return;
-      var p = Math.min(Math.max(-box.top / span, 0), 0.9999);
-      var s = Math.floor(p * states);
-      if (s !== last) {
-        last = s;
-        frame.setAttribute('data-active', String(s));
-      }
-    };
-    var queued = false;
-    var onScroll = function () {
-      if (queued) return;
-      queued = true;
-      requestAnimationFrame(function () { queued = false; track(); });
-    };
-    frame.setAttribute('data-active', '0');
-    track();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll);
+  /* ---- which section am I in: marks the nav link, changes no content -- */
+  var links = [].slice.call(document.querySelectorAll('.nav__links a[href^="#"]'));
+  if (links.length && 'IntersectionObserver' in window) {
+    var byId = {};
+    links.forEach(function (a) { byId[a.getAttribute('href').slice(1)] = a; });
+    var seen = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        var a = byId[en.target.id];
+        if (!a) return;
+        if (en.isIntersecting) {
+          links.forEach(function (l) { l.removeAttribute('aria-current'); });
+          a.setAttribute('aria-current', 'true');
+        }
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    Object.keys(byId).forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el) seen.observe(el);
+    });
   }
 })();
