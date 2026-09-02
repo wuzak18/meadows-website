@@ -123,6 +123,16 @@ h1 em, h2 em, h3 em { font-style: italic; font-weight: 500; color: var(--gold); 
 }
 .skip:focus { left: 14px; top: 14px; }
 
+/* Visually hidden but read aloud. The importer terms show "30%" and "70%" as
+   display numerals with aria-hidden, because a screen reader saying "thirty
+   percent" then "advance with the order" as two separate fragments is worse
+   than one sentence. This carries the spoken version. */
+.vh {
+  position: absolute; width: 1px; height: 1px;
+  margin: -1px; padding: 0; overflow: hidden;
+  clip-path: inset(50%); white-space: nowrap; border: 0;
+}
+
 /* --------------------------------------------------------------------------
    3. LAYOUT
    -------------------------------------------------------------------------- */
@@ -571,6 +581,60 @@ html.js .panel[hidden] { display: none; }
    18. MOTION. No reveal, no scroll-driven state. See the note in section 19
    of the previous build: hiding content behind a script broke the live site.
    -------------------------------------------------------------------------- */
+/* --------------------------------------------------------------------------
+   IMPORTER TERMS.
+
+   This is the only green band on the page, and that is deliberate: a buyer
+   hunting for payment terms finds it by scrolling past a colour he has seen
+   nowhere else, rather than by reading six headings. The dark-context overrides
+   above already cover `.band--green`, so the eyebrow, headings, lead and note
+   all invert correctly and nothing is repeated here.
+
+   The percentages are set in the display face at heading scale on purpose. They
+   are the first thing asked in almost every enquiry, so they are the largest
+   thing in the section after the heading itself.
+   -------------------------------------------------------------------------- */
+/* stretch, not start: with the documents card removed the side column held one
+   short card against a tall payment panel, and the gap below it read as a
+   missing element rather than as space. */
+.terms { display: grid; grid-template-columns: 1.12fr 1fr; gap: var(--gut); align-items: stretch; }
+
+.terms__main,
+.terms__card {
+  padding: clamp(22px, 2.6vw, 36px);
+  display: flex; flex-direction: column;
+  background: rgba(251, 246, 231, .06);
+  border: 1px solid var(--rule-night);
+}
+.terms__side { display: grid; gap: var(--gut); }
+.terms__card { justify-content: center; }
+
+.terms__k {
+  font-family: var(--f-ui); font-size: var(--t-ui); font-weight: 500;
+  letter-spacing: .18em; text-transform: uppercase; color: var(--gold-lit);
+}
+
+.terms__row {
+  display: grid; grid-template-columns: 4.8rem 1fr; gap: clamp(14px, 1.6vw, 22px);
+  margin-top: clamp(18px, 2vw, 24px); padding-top: clamp(18px, 2vw, 24px);
+  border-top: 1px solid var(--rule-night);
+}
+.terms__pc {
+  font-family: var(--f-disp); font-weight: 600; font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+  line-height: 1; color: var(--gold-lit); font-variation-settings: 'opsz' 60;
+}
+.terms__h { font-size: var(--t-h3); color: var(--on-night); margin-bottom: 6px; }
+
+.terms__v {
+  margin-top: 12px;
+  font-family: var(--f-disp); font-weight: 600; font-size: clamp(1.35rem, 2.2vw, 1.85rem);
+  line-height: 1.15; color: var(--on-night); font-variation-settings: 'opsz' 60;
+}
+
+.terms__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gut); }
+.terms__i { padding-top: 20px; border-top: 2px solid var(--gold); }
+.terms__i h3 { font-size: var(--t-h3); color: var(--on-night); margin-bottom: 8px; }
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .marq__track { animation: none; }
@@ -583,6 +647,8 @@ html.js .panel[hidden] { display: none; }
    19. RESPONSIVE. Mobile is designed here, not left to inherit.
    -------------------------------------------------------------------------- */
 @media (max-width: 1080px) {
+  .terms { grid-template-columns: 1fr; }
+  .terms__grid { grid-template-columns: 1fr 1fr; }
   .c1-5, .c1-6, .c1-7, .c7-12, .c8-12 { grid-column: 1 / span 12; }
   .why { grid-template-columns: 1fr 1fr; }
   .risk { grid-template-columns: 1fr; }
@@ -601,6 +667,8 @@ html.js .panel[hidden] { display: none; }
 }
 
 @media (max-width: 700px) {
+  .terms__grid { grid-template-columns: 1fr; }
+  .terms__row { grid-template-columns: 3.6rem 1fr; }
   /* the page was too long to scroll on a phone: tighten every rhythm */
   :root { --pad: 44px; --gut: 16px; }
   .open { margin-bottom: 20px; }
